@@ -12,3 +12,7 @@ url = f"https://www.newegg.ca/p/pl?d={graphics}&N=4131"
 # Getting the HTML Document using BeautifulSoup
 document = BeautifulSoup(requests.get(url).text , 'html.parser');
 
+# Getting the Last Page Number from the list of pages
+nextPages = document.find(class_ = 'list-tool-pagination-text').strong
+lastPageNumber = int(str(nextPages).split('/')[-2].split(">")[-1][:-1]);
+# print(lastPageNumber);
